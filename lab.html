@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+    <script src="jquery\jquery-3.4.1.min.js"></script>
+    <script>
+        $(function() {
+            // QUESTION-16 .click() METHOD
+            $('#btn-1').click(function() {
+                window.alert("Button has been clicked from click().");
+            });
+
+            // QUESTION-17 .bind() METHOD
+            $('#btn-2').bind('click', function() {
+                window.alert("Button has been clicked from bind().");
+            });
+
+            // QUESTION-18 .on() METHOD
+            $('#btn-3').on("click", function() {
+                window.alert("Button has been clicked from on().");
+            });
+
+            // QUESTION-19 MULTIPLE BUTTONS
+            $('.btn-4').on("click", function() {
+                window.alert("Button has been clicked from one of two buttons.");
+            });
+
+            // QUESTION-20 MOUSE EVENTS (ALERT)
+            $('#div-1').height("400px");
+            $('#div-1').width("400px");
+            $('#div-1').css('border', '1px solid black');
+            $('#div-1').on('click mouseenter mouseleave', function() {
+                window.alert("Click, MouseEnter or MouseLeave has occured");
+            });
+
+            // QUESTION-21 MOUSE EVENTS (SPAN)
+            $('#div-1').on('click mouseenter mouseleave', function(event) {
+                $('#divspan').append(event.type + " has occured <br>");
+            });
+
+            // QUESTION-22 LINK
+            $('a').on('click', function() {
+                event.preventDefault();
+                $(this).css('color', 'red');
+                window.alert(event.target.nodeName + " triggered the event.");
+            });
+
+            // QUESTION-23 RESIZE OF BROWSER
+            $('#div-2').css('border', '1px solid black');
+            $(window).resize(function() {
+                $('#div-2').html("Width : " + $(window).width() + "<br>" + "Height : " + $(window).height());
+            });
+
+            // QUESTION-24 INPUT
+            $('#input-1').focusin(function() {
+                $('#input-1').css('background', '#D3D3D3');
+            });
+            $('#input-1').focusout(function() {
+                $('#input-1').css('background', 'white');
+            });
+
+            // QUESTION-25 
+            $('#form2').submit(function(event) {
+                event.preventDefault();
+                val1 = $('#form2 #name').val();
+                val2 = $('#form2 #email').val();
+                if (val1 == "") {
+                    $('#form2 #name').css('border', '1px solid red');
+                    window.alert("Name is Required.");
+                } else {
+                    $('#form2 #name').css('border', 'default');
+                }
+                if (val2 == "") {
+                    $('#form2 #email').css('border', '1px solid red');
+                    window.alert("Email is Required.");
+                } else {
+                    $('#form2 #email').css('border', 'default');
+                }
+                if (!(val1 == "") && !(val2 == "")) {
+                    $('#form2 input').css('border', '1px solid green');
+                    $('#form2 #name').val("");
+                    $('#form2 #email').val("");
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <form id="form1">
+        <button id="btn-1">Button-1</button>
+        <button id="btn-2">Button-2</button>
+        <button id="btn-3">Button-3</button>
+        <button class="btn-4">Linked Button</button>
+        <button class="btn-4">Linked Button</button>
+
+        <div id="div-1"><span id="divspan"></span></div>
+        <a href="modulemedia.com">Module Media</a>
+        <div id="div-2"></div>
+
+        Input : <input id="input-1" type="text">
+        <hr>
+        <br><br>
+    </form>
+
+    <form id="form2">
+        Name : <input id="name" type="text"><br><br> Email : <input id="email" type="email"><br><br>
+        <button type="submit" id="submitbutton">Submit</button>
+    </form>
+</body>
+
+</html>
