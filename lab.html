@@ -33,12 +33,21 @@
             $('#div-1').height("400px");
             $('#div-1').width("400px");
             $('#div-1').css('border', '1px solid black');
-            $('#div-1').on('click mouseenter mouseleave', function() {
-                window.alert("Click, MouseEnter or MouseLeave has occured");
+            $('#div-1').on('click', function() {
+                window.alert("Click has occured");
+            });
+            $('#div-1').on('mouseenter', function() {
+                window.alert("MouseEnter() has occured");
+            });
+            $('#div-1').on('mouseleave', function() {
+                window.alert("MouseLeave() has occured");
             });
 
             // QUESTION-21 MOUSE EVENTS (SPAN)
-            $('#div-1').on('click mouseenter mouseleave', function(event) {
+            $('#div-2').height("400px");
+            $('#div-2').width("400px");
+            $('#div-2').css('border', '1px solid black');
+            $('#div-2').on('click mouseenter mouseleave', function(event) {
                 $('#divspan').append(event.type + " has occured <br>");
             });
 
@@ -50,9 +59,9 @@
             });
 
             // QUESTION-23 RESIZE OF BROWSER
-            $('#div-2').css('border', '1px solid black');
+            $('#div-3').css('border', '1px solid black');
             $(window).resize(function() {
-                $('#div-2').html("Width : " + $(window).width() + "<br>" + "Height : " + $(window).height());
+                $('#div-3').html("Width : " + $(window).width() + "<br>" + "Height : " + $(window).height());
             });
 
             // QUESTION-24 INPUT
@@ -98,9 +107,10 @@
         <button class="btn-4">Linked Button</button>
         <button class="btn-4">Linked Button</button>
 
-        <div id="div-1"><span id="divspan"></span></div>
+        <div id="div-1"></div>
+        <div id="div-2"><span id="divspan"></span></div>
         <a href="modulemedia.com">Module Media</a>
-        <div id="div-2"></div>
+        <div id="div-3"></div>
 
         Input : <input id="input-1" type="text">
         <hr>
